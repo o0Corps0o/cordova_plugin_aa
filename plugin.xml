@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.fgl.enhance.cordova"
+    version="1.0.0">
+
+    <name>Enhance Plugin</name>
+    <description>Cordova plugin for Enhance</description>
+    <author>FGL</author>
+	 <license>BSD</license>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <js-module src="www/enhance.js" name="Enhance">
+        <clobbers target="Enhance" />
+    </js-module>
+
+    <access origin="*" />
+
+    <!-- Android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*" >
+           <feature name="Enhance">
+              <param name="android-package" value="com.fgl.enhance.cordova.EnhanceCordova" />
+              <param name="onload" value="true" />
+           </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*" >
+           <uses-permission android:name="android.permission.INTERNET" />
+           <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        </config-file>
+        <source-file src="src/android/EnhanceCordova.java" target-dir="src/com/fgl/enhance/cordova" />
+        <source-file src="src/android/FGL-Enhance-Connector.jar" target-dir="libs" framework="true" />
+        <source-file src="src/android/android-support-v4.jar" target-dir="libs" framework="true" />
+    </platform>
+</plugin>
